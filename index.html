@@ -57,7 +57,6 @@ header p {
     letter-spacing: 2px;
 }
 
-/* Блок быстрых ссылок */
 .clan-links {
     display: flex;
     justify-content: center;
@@ -90,7 +89,6 @@ header p {
     transform: translateY(-2px);
 }
 
-/* Навигация (Вкладки) */
 .nav-tabs {
     display: flex;
     justify-content: center;
@@ -126,7 +124,6 @@ header p {
     box-shadow: 0 0 20px rgba(255, 48, 48, 0.4);
 }
 
-/* Контейнер для вкладок */
 .container {
     width: min(1000px, 92%);
     margin: auto;
@@ -143,11 +140,17 @@ header p {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Карточки правил */
 .rule {
     margin: 18px 0;
     border: 1px solid rgba(255, 40, 40, .25);
@@ -204,9 +207,18 @@ header p {
     line-height: 1.7;
 }
 
-.inner h3 { color: #ff3b3b; margin: 15px 0 8px; }
-.inner p { margin: 5px 0; }
-.inner b { color: #fff; }
+.inner h3 {
+    color: #ff3b3b;
+    margin: 15px 0 8px;
+}
+
+.inner p {
+    margin: 5px 0;
+}
+
+.inner b {
+    color: #fff;
+}
 
 .punishment {
     display: inline-block;
@@ -220,13 +232,16 @@ header p {
     font-weight: bold;
 }
 
-/* Главный блок наказаний */
 .punishments {
     margin-top: 35px;
     padding: 30px;
     border: 1px solid rgba(255, 40, 40, .45);
     border-radius: 16px;
-    background: linear-gradient(135deg, rgba(80, 0, 0, .25), rgba(15, 15, 15, .9));
+    background: linear-gradient(
+        135deg,
+        rgba(80, 0, 0, .25),
+        rgba(15, 15, 15, .9)
+    );
     box-shadow: 0 0 35px rgba(255, 0, 0, .1);
 }
 
@@ -244,10 +259,15 @@ header p {
     border-bottom: 1px solid rgba(255,255,255,.07);
 }
 
-.punishment-row:last-child { border-bottom: none; }
-.time { color: #ff4444; font-weight: bold; }
+.punishment-row:last-child {
+    border-bottom: none;
+}
 
-/* Участники */
+.time {
+    color: #ff4444;
+    font-weight: bold;
+}
+
 .members-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -263,6 +283,13 @@ header p {
     align-items: center;
     gap: 15px;
     box-shadow: 0 0 20px rgba(255,0,0,0.05);
+    transition: .3s;
+}
+
+.member-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 40, 40, .7);
+    box-shadow: 0 0 25px rgba(255,0,0,.15);
 }
 
 .member-avatar {
@@ -275,6 +302,7 @@ header p {
     align-items: center;
     justify-content: center;
     font-size: 20px;
+    flex-shrink: 0;
 }
 
 .member-info h3 {
@@ -313,8 +341,73 @@ header p {
     margin-top: 40px;
     padding: 20px;
 }
-.final h2 { font-size: 22px; text-shadow: 0 0 15px #ff2222; }
-.final p { color: #aaa; margin-top: 8px; letter-spacing: 2px; }
+
+.final h2 {
+    font-size: 22px;
+    text-shadow: 0 0 15px #ff2222;
+}
+
+.final p {
+    color: #aaa;
+    margin-top: 8px;
+    letter-spacing: 2px;
+}
+
+/* Цвета ролей */
+
+.role-owner {
+    color: #ffcc00 !important;
+}
+
+.role-deputy {
+    color: #00c8ff !important;
+}
+
+.role-admin {
+    color: #b56cff !important;
+}
+
+.role-player {
+    color: #2ecc71 !important;
+}
+
+.role-owner::before,
+.role-deputy::before,
+.role-admin::before,
+.role-player::before {
+    background-color: currentColor;
+    box-shadow: 0 0 6px currentColor;
+}
+
+/* Адаптация под телефон */
+
+@media (max-width: 600px) {
+    header {
+        padding-top: 35px;
+    }
+
+    .clan-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .clan-link-btn {
+        justify-content: center;
+    }
+
+    .tab-btn {
+        width: 100%;
+    }
+
+    .punishment-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+}
 </style>
 </head>
 
@@ -322,256 +415,646 @@ header p {
 
 <header>
     <div class="icon">⚔️</div>
+
     <h1>Клан Портал</h1>
+
     <p>ONE CLAN • ONE GOAL • ONE POWER</p>
 </header>
 
-<!-- Ссылки на соцсети и ресурсы -->
+<!-- Ссылки -->
 <div class="clan-links">
-    <a href="https://discord.gg/CehYnX4ukz" target="_blank" class="clan-link-btn">💬 Discord Клана</a>
-    <a href="https://t.me/Base_Angelo4ek" target="_blank" class="clan-link-btn">📢 Telegram канал</a>
-    <a href="https://mods.holyworld.me/" target="_blank" class="clan-link-btn">🧩 HolyWorld Mods</a>
+
+    <a
+        href="https://discord.gg/CehYnX4ukz"
+        target="_blank"
+        class="clan-link-btn"
+    >
+        💬 Discord Клана
+    </a>
+
+    <a
+        href="https://t.me/Base_Angelo4ek"
+        target="_blank"
+        class="clan-link-btn"
+    >
+        📢 Telegram канал
+    </a>
+
+    <a
+        href="https://mods.holyworld.me/"
+        target="_blank"
+        class="clan-link-btn"
+    >
+        🧩 HolyWorld Mods
+    </a>
+
 </div>
 
-<!-- Меню Вкладок -->
+<!-- Навигация -->
 <div class="nav-tabs">
-    <button class="tab-btn active" onclick="switchTab('rules')">📜 Правила</button>
-    <button class="tab-btn" onclick="switchTab('members')">👥 Участники</button>
+
+    <button
+        class="tab-btn active"
+        onclick="switchTab('rules', this)"
+    >
+        📜 Правила
+    </button>
+
+    <button
+        class="tab-btn"
+        onclick="switchTab('members', this)"
+    >
+        👥 Участники
+    </button>
+
 </div>
 
 <div class="container">
 
-    <!-- ВКЛАДКА 1: ПРАВИЛА -->
+    <!-- ==================== ПРАВИЛА ==================== -->
+
     <div id="tab-rules" class="tab-content active">
+
         <!-- §1 -->
         <div class="rule">
+
             <button class="rule-title">
                 <span>§1. Общие правила</span>
                 <span class="arrow">⌄</span>
             </button>
+
             <div class="content">
                 <div class="inner">
-                    <p><b>1.1.</b> Каждый участник обязан соблюдать правила клана.</p>
-                    <p><b>1.2.</b> Правила распространяются на всех участников без исключений.</p>
-                    <p><b>1.3.</b> Незнание правил не освобождает от ответственности.</p>
-                    <p><b>1.4.</b> Уважение к участникам и руководству обязательно.</p>
+
+                    <p>
+                        <b>1.1.</b>
+                        Каждый участник обязан соблюдать правила клана.
+                    </p>
+
+                    <p>
+                        <b>1.2.</b>
+                        Правила распространяются на всех участников без исключений.
+                    </p>
+
+                    <p>
+                        <b>1.3.</b>
+                        Незнание правил не освобождает от ответственности.
+                    </p>
+
+                    <p>
+                        <b>1.4.</b>
+                        Уважение к участникам и руководству обязательно.
+                    </p>
+
                 </div>
             </div>
+
         </div>
 
         <!-- §2 -->
         <div class="rule">
+
             <button class="rule-title">
                 <span>§2. Общение</span>
                 <span class="arrow">⌄</span>
             </button>
+
             <div class="content">
                 <div class="inner">
+
                     <h3>2.1. Запрещено:</h3>
-                    <p><b>2.1.1.</b> Оскорбление участников — <span class="punishment">Мут 30 минут</span></p>
-                    <p><b>2.1.2.</b> Провокация конфликтов — <span class="punishment">Мут 1 час</span></p>
-                    <p><b>2.1.3.</b> Флуд / спам — <span class="punishment">Мут 30 минут</span></p>
-                    <p><b>2.1.4.</b> Чрезмерный капс — <span class="punishment">Мут 15 минут</span></p>
-                    <p><b>2.1.5.</b> Оскорбление руководства — <span class="punishment">Мут 2 часа</span></p>
-                    <p>При повторном нарушении срок наказания увеличивается в <b>2 раза</b>.</p>
+
+                    <p>
+                        <b>2.1.1.</b>
+                        Оскорбление участников —
+                        <span class="punishment">Мут 30 минут</span>
+                    </p>
+
+                    <p>
+                        <b>2.1.2.</b>
+                        Провокация конфликтов —
+                        <span class="punishment">Мут 1 час</span>
+                    </p>
+
+                    <p>
+                        <b>2.1.3.</b>
+                        Флуд / спам —
+                        <span class="punishment">Мут 30 минут</span>
+                    </p>
+
+                    <p>
+                        <b>2.1.4.</b>
+                        Чрезмерный капс —
+                        <span class="punishment">Мут 15 минут</span>
+                    </p>
+
+                    <p>
+                        <b>2.1.5.</b>
+                        Оскорбление руководства —
+                        <span class="punishment">Мут 2 часа</span>
+                    </p>
+
+                    <p>
+                        При повторном нарушении срок наказания увеличивается
+                        в <b>2 раза</b>.
+                    </p>
+
                 </div>
             </div>
+
         </div>
 
         <!-- §3 -->
         <div class="rule">
+
             <button class="rule-title">
                 <span>§3. Discord-сервер</span>
                 <span class="arrow">⌄</span>
             </button>
+
             <div class="content">
                 <div class="inner">
+
                     <h3>3.1. Запрещено:</h3>
-                    <p><b>3.1.1.</b> NSFW-контент — <span class="punishment">Мут 24 часа</span></p>
-                    <p><b>3.1.2.</b> Шок-контент — <span class="punishment">Мут 12 часов</span></p>
-                    <p><b>3.1.3.</b> Реклама без разрешения — <span class="punishment">Мут 6 часов</span></p>
-                    <p><b>3.1.4.</b> Спам стикерами / картинок — <span class="punishment">Мут 1 час</span></p>
-                    <p><b>3.1.5.</b> Массовый спам или рейд — <span class="punishment">Бан навсегда</span></p>
+
+                    <p>
+                        <b>3.1.1.</b>
+                        NSFW-контент —
+                        <span class="punishment">Мут 24 часа</span>
+                    </p>
+
+                    <p>
+                        <b>3.1.2.</b>
+                        Шок-контент —
+                        <span class="punishment">Мут 12 часов</span>
+                    </p>
+
+                    <p>
+                        <b>3.1.3.</b>
+                        Реклама без разрешения —
+                        <span class="punishment">Мут 6 часов</span>
+                    </p>
+
+                    <p>
+                        <b>3.1.4.</b>
+                        Спам стикерами / картинок —
+                        <span class="punishment">Мут 1 час</span>
+                    </p>
+
+                    <p>
+                        <b>3.1.5.</b>
+                        Массовый спам или рейд —
+                        <span class="punishment">Бан навсегда</span>
+                    </p>
+
                 </div>
             </div>
+
         </div>
 
         <!-- §4 -->
         <div class="rule">
+
             <button class="rule-title">
                 <span>§4. Клан и игра</span>
                 <span class="arrow">⌄</span>
             </button>
+
             <div class="content">
                 <div class="inner">
+
                     <h3>4.1. Каждый участник обязан:</h3>
-                    <p><b>4.1.1.</b> Помогать союзникам.</p>
-                    <p><b>4.1.2.</b> Участвовать в важных клановых мероприятиях.</p>
-                    <p><b>4.1.3.</b> Выполнять указания руководства.</p>
-                    <p><b>4.1.4.</b> Защищать интересы клана.</p>
+
+                    <p>
+                        <b>4.1.1.</b>
+                        Помогать союзникам.
+                    </p>
+
+                    <p>
+                        <b>4.1.2.</b>
+                        Участвовать в важных клановых мероприятиях.
+                    </p>
+
+                    <p>
+                        <b>4.1.3.</b>
+                        Выполнять указания руководства.
+                    </p>
+
+                    <p>
+                        <b>4.1.4.</b>
+                        Защищать интересы клана.
+                    </p>
+
                     <h3>4.2. Запрещено:</h3>
-                    <p><b>4.2.1.</b> Предательство клана — <span class="punishment">Выговор / исключение</span></p>
-                    <p><b>4.2.2.</b> Слив координат базы — <span class="punishment">Исключение + ЧС</span></p>
-                    <p><b>4.2.3.</b> Передача информации врагам — <span class="punishment">Исключение + ЧС</span></p>
-                    <p><b>4.2.4.</b> Намеренный саботаж — <span class="punishment">Выговор / исключение</span></p>
+
+                    <p>
+                        <b>4.2.1.</b>
+                        Предательство клана —
+                        <span class="punishment">Выговор / исключение</span>
+                    </p>
+
+                    <p>
+                        <b>4.2.2.</b>
+                        Слив координат базы —
+                        <span class="punishment">Исключение + ЧС</span>
+                    </p>
+
+                    <p>
+                        <b>4.2.3.</b>
+                        Передача информации врагам —
+                        <span class="punishment">Исключение + ЧС</span>
+                    </p>
+
+                    <p>
+                        <b>4.2.4.</b>
+                        Намеренный саботаж —
+                        <span class="punishment">Выговор / исключение</span>
+                    </p>
+
                 </div>
             </div>
+
         </div>
 
         <!-- §5 -->
         <div class="rule">
+
             <button class="rule-title">
                 <span>§5. Честная игра</span>
                 <span class="arrow">⌄</span>
             </button>
+
             <div class="content">
                 <div class="inner">
+
                     <h3>5.1. Запрещено:</h3>
-                    <p><b>5.1.1.</b> Использование читов — <span class="punishment">Исключение</span></p>
-                    <p><b>5.1.2.</b> Запрещённые модификации — <span class="punishment">Выговор / исключение</span></p>
-                    <p><b>5.1.3.</b> Использование багов — <span class="punishment">Выговор</span></p>
-                    <p><b>5.1.4.</b> Действия, ведущие к блокировке клана — <span class="punishment">Исключение</span></p>
+
+                    <p>
+                        <b>5.1.1.</b>
+                        Использование читов —
+                        <span class="punishment">Исключение</span>
+                    </p>
+
+                    <p>
+                        <b>5.1.2.</b>
+                        Запрещённые модификации —
+                        <span class="punishment">Выговор / исключение</span>
+                    </p>
+
+                    <p>
+                        <b>5.1.3.</b>
+                        Использование багов —
+                        <span class="punishment">Выговор</span>
+                    </p>
+
+                    <p>
+                        <b>5.1.4.</b>
+                        Действия, ведущие к блокировке клана —
+                        <span class="punishment">Исключение</span>
+                    </p>
+
                 </div>
             </div>
+
         </div>
 
         <!-- §6 -->
         <div class="rule">
+
             <button class="rule-title">
                 <span>§6. Конфиденциальность</span>
                 <span class="arrow">⌄</span>
             </button>
+
             <div class="content">
                 <div class="inner">
+
                     <h3>6.1. Запрещено:</h3>
-                    <p><b>6.1.1.</b> Слив внутренних переписок — <span class="punishment">Мут 24 часа</span></p>
-                    <p><b>6.1.2.</b> Слив информации клана — <span class="punishment">Исключение</span></p>
-                    <p><b>6.1.3.</b> Передача стратегий врагам — <span class="punishment">Исключение + ЧС</span></p>
+
+                    <p>
+                        <b>6.1.1.</b>
+                        Слив внутренних переписок —
+                        <span class="punishment">Мут 24 часа</span>
+                    </p>
+
+                    <p>
+                        <b>6.1.2.</b>
+                        Слив информации клана —
+                        <span class="punishment">Исключение</span>
+                    </p>
+
+                    <p>
+                        <b>6.1.3.</b>
+                        Передача стратегий врагам —
+                        <span class="punishment">Исключение + ЧС</span>
+                    </p>
+
                 </div>
             </div>
+
         </div>
 
         <!-- §7 -->
         <div class="rule">
+
             <button class="rule-title">
                 <span>§7. Система наказаний</span>
                 <span class="arrow">⌄</span>
             </button>
+
             <div class="content">
                 <div class="inner">
-                    <p><b>7.1.</b> Повторное нарушение в течение <b>7 дней</b> увеличивает наказание.</p>
-                    <p><b>7.2.</b> За тяжелые нарушения наказание выдается сразу без предупреждений.</p>
+
+                    <p>
+                        <b>7.1.</b>
+                        Повторное нарушение в течение
+                        <b>7 дней</b> увеличивает наказание.
+                    </p>
+
+                    <p>
+                        <b>7.2.</b>
+                        За тяжелые нарушения наказание выдается сразу
+                        без предупреждений.
+                    </p>
+
                 </div>
             </div>
+
         </div>
 
         <!-- §8 -->
         <div class="rule">
+
             <button class="rule-title">
                 <span>§8. Главное правило</span>
                 <span class="arrow">⌄</span>
             </button>
+
             <div class="content">
                 <div class="inner">
+
                     <p>⚔️ Мы — единый состав.</p>
                     <p>🛡️ Мы не бросаем своих.</p>
                     <p>🔥 Мы не сдаём своих.</p>
                     <p>☠️ <b>МЫ НИКОГДА НЕ ПАДАЕМ.</b></p>
+
                 </div>
             </div>
+
         </div>
 
         <!-- Таблица наказаний -->
         <div class="punishments">
+
             <h2>⚠️ СВОДКА НАКАЗАНИЙ</h2>
-            <div class="punishment-row"><span>Лёгкое нарушение</span><span class="time">Предупреждение</span></div>
-            <div class="punishment-row"><span>Флуд / спам</span><span class="time">15–30 минут</span></div>
-            <div class="punishment-row"><span>Серьёзное нарушение</span><span class="time">1–6 часов</span></div>
-            <div class="punishment-row"><span>Грубое нарушение</span><span class="time">12–24 часа</span></div>
-            <div class="punishment-row"><span>Предательство / Слив</span><span class="time">Исключение + ЧС</span></div>
-            <div class="punishment-row"><span>Читы</span><span class="time">Исключение</span></div>
+
+            <div class="punishment-row">
+                <span>Лёгкое нарушение</span>
+                <span class="time">Предупреждение</span>
+            </div>
+
+            <div class="punishment-row">
+                <span>Флуд / спам</span>
+                <span class="time">15–30 минут</span>
+            </div>
+
+            <div class="punishment-row">
+                <span>Серьёзное нарушение</span>
+                <span class="time">1–6 часов</span>
+            </div>
+
+            <div class="punishment-row">
+                <span>Грубое нарушение</span>
+                <span class="time">12–24 часа</span>
+            </div>
+
+            <div class="punishment-row">
+                <span>Предательство / Слив</span>
+                <span class="time">Исключение + ЧС</span>
+            </div>
+
+            <div class="punishment-row">
+                <span>Читы</span>
+                <span class="time">Исключение</span>
+            </div>
+
         </div>
 
         <div class="final">
-            <h2>☠️ ONE CLAN • ONE GOAL • ONE POWER ☠️</h2>
+
+            <h2>
+                ☠️ ONE CLAN • ONE GOAL • ONE POWER ☠️
+            </h2>
+
             <p>WE NEVER FALL.</p>
+
         </div>
+
     </div>
 
+    <!-- ==================== УЧАСТНИКИ ==================== -->
 
-    <!-- ВКЛАДКА 2: УЧАСТНИКИ -->
     <div id="tab-members" class="tab-content">
+
         <div class="panel">
-            <h2 style="color: #ff3838; margin-bottom: 20px; text-align: center;">🛡️ Состав клана</h2>
+
+            <h2 style="
+                color: #ff3838;
+                margin-bottom: 20px;
+                text-align: center;
+            ">
+                🛡️ Состав клана
+            </h2>
+
             <div class="members-grid">
+
+                <!-- ОВНЕР -->
                 <div class="member-card">
-                    <div class="member-avatar">⚔️</div>
+
+                    <div class="member-avatar">👑</div>
+
                     <div class="member-info">
+
                         <h3>xzLegendaxbbb</h3>
-                        <div class="member-status">Участник</div>
+
+                        <div class="member-status role-owner">
+                            Овнер
+                        </div>
+
                     </div>
+
                 </div>
+
+                <!-- ЗАМ. ВЛАДЕЛЕЦ -->
                 <div class="member-card">
-                    <div class="member-avatar">⚔️</div>
+
+                    <div class="member-avatar">💎</div>
+
                     <div class="member-info">
+
                         <h3>rupl</h3>
-                        <div class="member-status">Участник</div>
+
+                        <div class="member-status role-deputy">
+                            Зам. владелец
+                        </div>
+
                     </div>
+
                 </div>
+
+                <!-- ТЕХ. АДМИН -->
                 <div class="member-card">
-                    <div class="member-avatar">⚔️</div>
+
+                    <div class="member-avatar">⚙️</div>
+
                     <div class="member-info">
-                        <h3>_zxc_deth_204</h3>
-                        <div class="member-status">Участник</div>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <div class="member-avatar">⚔️</div>
-                    <div class="member-info">
+
                         <h3>_AngelYT_</h3>
-                        <div class="member-status">Участник</div>
+
+                        <div class="member-status role-admin">
+                            Тех. админ
+                        </div>
+
                     </div>
+
                 </div>
+
+                <!-- ИГРОК -->
                 <div class="member-card">
+
                     <div class="member-avatar">⚔️</div>
+
                     <div class="member-info">
-                        <h3>kolyasoup123</h3>
-                        <div class="member-status">Участник</div>
+
+                        <h3>Ram4ik123</h3>
+
+                        <div class="member-status role-player">
+                            Игрок
+                        </div>
+
                     </div>
+
                 </div>
+
+                <!-- ИГРОК -->
+                <div class="member-card">
+
+                    <div class="member-avatar">⚔️</div>
+
+                    <div class="member-info">
+
+                        <h3>протеин</h3>
+
+                        <div class="member-status role-player">
+                            Игрок
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ИГРОК -->
+                <div class="member-card">
+
+                    <div class="member-avatar">⚔️</div>
+
+                    <div class="member-info">
+
+                        <h3>_zxc_deth_204</h3>
+
+                        <div class="member-status role-player">
+                            Игрок
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ИГРОК -->
+                <div class="member-card">
+
+                    <div class="member-avatar">⚔️</div>
+
+                    <div class="member-info">
+
+                        <h3>kolyasoup123</h3>
+
+                        <div class="member-status role-player">
+                            Игрок
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
+
     </div>
 
 </div>
 
 <script>
-// Переключение вкладок
-function switchTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-    
-    document.getElementById('tab-' + tabId).classList.add('active');
-    event.currentTarget.classList.add('active');
+
+/* Переключение вкладок */
+
+function switchTab(tabId, button) {
+
+    document
+        .querySelectorAll('.tab-content')
+        .forEach(function(el) {
+            el.classList.remove('active');
+        });
+
+    document
+        .querySelectorAll('.tab-btn')
+        .forEach(function(el) {
+            el.classList.remove('active');
+        });
+
+    document
+        .getElementById('tab-' + tabId)
+        .classList.add('active');
+
+    button.classList.add('active');
 }
 
-// Аккордеон для правил
+
+/* Аккордеон правил */
+
 const rules = document.querySelectorAll(".rule");
-rules.forEach(rule => {
+
+rules.forEach(function(rule) {
+
     const button = rule.querySelector(".rule-title");
     const content = rule.querySelector(".content");
-    button.addEventListener("click", () => {
+
+    button.addEventListener("click", function() {
+
         const isOpen = rule.classList.contains("open");
-        rules.forEach(other => {
+
+        rules.forEach(function(other) {
+
             other.classList.remove("open");
+
             other.querySelector(".content").style.maxHeight = null;
+
         });
+
         if (!isOpen) {
+
             rule.classList.add("open");
-            content.style.maxHeight = content.scrollHeight + "px";
+
+            content.style.maxHeight =
+                content.scrollHeight + "px";
+
         }
+
     });
+
 });
+
 </script>
 
 </body>
